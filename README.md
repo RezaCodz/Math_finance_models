@@ -13,16 +13,16 @@ A growing collection of Python implementations for core models in mathematical f
   - Black-Scholes Model
   - Binomial Trees (Cox-Ross-Rubinstein)
   - Monte Carlo Simulation
--  **Interest Rate Models**
+**Interest Rate Models**
   - Vasicek Model
   - CIR Model
--  **Stochastic Processes**
+**Stochastic Processes**
   - Brownian Motion
   - Geometric Brownian Motion
   - Ornstein-Uhlenbeck Process
--  **Risk Metrics**
+**Risk Metrics**
   - Value at Risk (VaR)
   - Expected Shortfall
-- **Portfolio Theory**
+**Portfolio Theory**
   - Mean-Variance Optimization
   - Efficient Frontier
