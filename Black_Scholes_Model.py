@@ -34,7 +34,9 @@ def trajectory(S0 = 100, mu = 0.05, sigma = 0.2, T = 1.0, dt = 0.01,M = 1000):
     plt.ylabel("Asset Price")
     plt.grid(True)
     plt.show()
+    return S, M, N
     print("done")
-    exit()
 
-trajectory()
+S, M, N = trajectory()
+
+assert S.shape == (M, N + 1) f"Expected shape {(M, N + 1)}, got {S.shape}"
