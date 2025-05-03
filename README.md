@@ -1,6 +1,8 @@
 # Math_finance_models
 A growing collection of implementations for core models in mathematical finance.
 
+
+Hosein khare
 # Mathematical Finance Models
 
 A growing collection of Python implementations for core models in mathematical finance. This repository is designed for educational purposes, interview prep, and building intuition about pricing, risk, and stochastic processes.
