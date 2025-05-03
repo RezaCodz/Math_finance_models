@@ -23,6 +23,7 @@ def trajectory(S0 = 100, mu = 0.05, sigma = 0.2, T = 1.0, dt = 0.01,M = 1000):
         Z = np.random.standard_normal(M)  # standard normal random variables
         S[:, i] = S[:, i - 1] * np.exp((mu - 0.5 * sigma ** 2) * dt + sigma * np.sqrt(dt) * Z)
 
+    return S0, S, M, N
 
     print(len(S))
     # Plot
@@ -33,9 +34,8 @@ def trajectory(S0 = 100, mu = 0.05, sigma = 0.2, T = 1.0, dt = 0.01,M = 1000):
     plt.xlabel("Time (Years)")
     plt.ylabel("Asset Price")
     plt.grid(True)
+    
     plt.show()
-    return S0, S, M, N
-    print("done")
 
 if __name__ == "__main__":
     S0, S, M, N = trajectory()
