@@ -34,9 +34,17 @@ def trajectory(S0 = 100, mu = 0.05, sigma = 0.2, T = 1.0, dt = 0.01,M = 1000):
     plt.ylabel("Asset Price")
     plt.grid(True)
     plt.show()
-    return S, M, N
+    return S0, S, M, N
     print("done")
 
-S, M, N = trajectory()
+if __name__ == "__main__":
+    S0, S, M, N = trajectory()
 
-assert S.shape == (M, N + 1) f"Expected shape {(M, N + 1)}, got {S.shape}"
+# try:
+#     assert S.shape == (M, N + 2) #f"Expected shape {(M, N + 1)}, got {S.shape}"
+# except AssertionError: 
+#     print("i found out the error")
+# except Exception as e:
+#     print('error in assert Reza', e, type(e).__name__)
+    
+# print(S.shape)
