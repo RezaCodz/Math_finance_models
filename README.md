@@ -12,7 +12,7 @@ A growing collection of Python implementations for core models in mathematical f
  **Option Pricing**
   - Black-Scholes Model
   - Binomial Trees (Cox-Ross-Rubinstein)
-  - Monte Carlo Simulatio
+  - Monte Carlo Simulation
     
 **Interest Rate Models**
   - Vasicek Model
