@@ -30,4 +30,7 @@ plt.xlabel("Time (Years)")
 plt.ylabel("Asset Price")
 plt.grid(True)
 plt.show()
+
+print("done")
 exit()
+
