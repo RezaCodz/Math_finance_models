@@ -1,0 +1,14 @@
+name: Math_finance_models
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - yfinance
+  - pandas
+  - scipy
+  - numpy<2.0
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pymc
+  - arviz
