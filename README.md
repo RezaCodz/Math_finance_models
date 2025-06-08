@@ -77,9 +77,13 @@ The pyMC sampler uses 95\% acceptance to sample from those priors to fit the nor
 
 ### Noise-signal tradeoff for choice of dt intervals for log-returns
 
+First plotting the closing prices for the stock of MSFT (Microsoft)
+
+![MSFT-closing](./plots/plot2.png)
+
 When we used daily returns, the noise was too much compared to the signal so the priors were not updated. 
 
 Using dt intervals for (log-) returns gave us the following resutls for dt-intervals from 5 to 20 days, which shows the model is robust to this parameter.
 
-![MSFT](./plots/plot1.png)
+![MSFT-bayesian](./plots/plot1.png)
 
