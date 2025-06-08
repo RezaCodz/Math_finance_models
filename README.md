@@ -70,6 +70,16 @@ Since $W_t \sim N(0, t)$, the log return is **normally distributed**:
 
 $r_t \sim N \left( (\mu - \frac{1}{2}\sigma^2)t, \sigma^2 t \right)$
 
-### dt intervals for 
-![plot](./directory_1/directory_2/.../directory_n/plot.png)
+### Bayesian model using pyMC 
+We have used pyMC with normal prior for $\mu$ and half normal for $\sigma$ with a wide variance which is basically a non-informative prior.
+
+The pyMC sampler uses 95\% acceptance to sample from those priors to fit the normal distribution to the log returns with mean $(\mu - \frac{1}{2}\sigma^2)t$ and variance $\sigma^2 t$. 
+
+### Noise-signal tradeoff for choice of dt intervals for log-returns
+
+When we used daily returns, the noise was too much compared to the signal so the priors were not updated. 
+
+Using dt intervals for (log-) returns gave us the following resutls for dt-intervals from 5 to 20 days, which shows the model is robust to this parameter.
+
+![MSFT](./plots/plot1.png)
 
