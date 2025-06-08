@@ -1,4 +1,4 @@
-The goal of GBM.ipynb is to use the feature of GBM that is log-normal returns and use pyMC montecarlo simulation to to use this prior 
+## The goal of GBM.ipynb is to use the feature (that we will derive) of log-normal returns of the stocks according to GBM modeling of changes in stock prices and use pyMC montecarlo sampling using normal priors for drift and volatility of the GBM. 
 
 ### Modeling changes in stock price $\(dS_t\)$
 Short revision:
