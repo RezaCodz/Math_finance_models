@@ -1,32 +1,75 @@
-# Math_finance_models
-A growing collection of implementations for core models in mathematical finance.
+The goal of GBM.ipynb is to use the feature of GBM that is log-normal returns and use pyMC montecarlo simulation to to use this prior 
 
-# Mathematical Finance Models
+### Modeling changes in stock price $\(dS_t\)$
+Short revision:
+Starting with the SDE (Stochastic Differential Equation) for GBM (Geometric Brownian Motion), which is:
 
-A growing collection of Python implementations for core models in mathematical finance. This repository is designed for educational purposes, interview prep, and building intuition about pricing, risk, and stochastic processes.
+$dS_t = \mu S_t dt + \sigma S_t dW_t$
 
----
+where:
+- $S_t$ = asset price at time \(t\)
+- $\mu$ = drift (expected return)
+- $\sigma$ = volatility
+- $dW_t$ = increment of a Wiener process (Brownian motion)
 
-## Topics Covered
+We like to see things that are **normally** distributed so we can find maximum likelihood based on it. 
 
- **Option Pricing**
-  - Black-Scholes Model
-  - Binomial Trees (Cox-Ross-Rubinstein)
-  - Monte Carlo Simulation
-    
-**Interest Rate Models**
-  - Vasicek Model
-  - CIR Model
-    
-**Stochastic Processes**
-  - Brownian Motion
-  - Geometric Brownian Motion
-  - Ornstein-Uhlenbeck Process
-    
-**Risk Metrics**
-  - Value at Risk (VaR)
-  - Expected Shortfall
-    
-**Portfolio Theory**
-  - Mean-Variance Optimization
-  - Efficient Frontier
+In the next section we will see that in fact, if we **log-transform the $S_t$**, call it $X_t = ln(S_t)$ and take the differential, it gives the logarithm of the returns $dX_t$ and this will indeed be normally distributed. We will find the mean and variance of this normally distributed variable.  
+
+### How to interpret "(log-)Returns"?
+Returns are closing price for example at end of yesterday - closing price at end of today.
+Or it can also be closing price in intervals of 5 days, 10 days, 20 days...
+
+Let's derive the mean and variance of the normally distributed log-returns quickly: 
+
+Let $\( X_t = \ln(S_t) \)$, then by Itô's lemma, we must take taylor's series up to second order for GBM:
+Taylor's Series for a Function $f(S_t)$ (for small $dS_t$ ):
+
+For a function $f(S_t)$, the Taylor series expansion to the second order is:
+
+$df(S_t) \approx f'(S_t)dS_t + \frac{1}{2}f''(S_t)(dS_t)^2$
+
+In ordinary calculus, higher-order terms like $dS_t^3$ are negligible as $dt \to 0$.
+
+Applying to $f(S_t) = \ln S_t$:
+
+Calculate the derivatives:
+- $f'(S_t) = \frac{1}{S_t}$
+- $f''(S_t) = -\frac{1}{S_t^2}$
+
+Plug into the Taylor expansion: 
+
+$d[\ln S_t] \approx \frac{1}{S_t} dS_t - \frac{1}{2} \frac{1}{S_t^2} (dS_t)^2$
+
+**Ito's lemma basically tells us how many terms of the  taylor's series we must take, since for GBM, $dt^2$ is not zero, since it's nowhere differentiable**:
+
+### Log-normal returns with mean $(\mu - \frac{1}{2}\sigma^2)t$ and variance $\sigma^2 t$
+$dX_t = \frac{1}{S_t} dS_t - \frac{1}{2} \frac{1}{S_t^2} (dS_t)^2$
+
+Plug in $dS_t$ and **consider** $d_t^2$ and $d_td_W$ are zero, and $d_W^2 = dt$: 
+
+$dX_t = \frac{1}{S_t} (\mu S_t dt + \sigma S_t dW_t) - \frac{1}{2} \frac{1}{S_t^2} (\sigma S_t)^2 dt
+= (\mu dt + \sigma dW_t) - \frac{1}{2} \sigma^2 dt
+= (\mu - \frac{1}{2}\sigma^2)dt + \sigma dW_t$
+
+This formula depends only on $\mu$ and $\sigma$ and we have eliminated $S_t$ from the SDK with multiplicative noise that we started to model the changes in stock price with, and only have them in log-form. 
+
+Now, integrate both sides from 0 to $t$:
+
+$X_t - X_0 = (\mu - \frac{1}{2}\sigma^2) t + \sigma W_t$
+
+$\ln(S_t) = \ln(S_0) + (\mu - \frac{1}{2} \sigma^2)t + \sigma W_t$
+
+Now we just want log returns **over period t** $r_t$ i.e. $\ln(S_t) - \ln(S_0)$:
+
+$r_t = \ln \left( \frac{S_t}{S_0} \right) = \ln(S_t) - \ln(S_0) = (\mu - \frac{1}{2}\sigma^2)t + \sigma W_t$
+
+## Distribution of Log-Returns:
+
+Since $W_t \sim N(0, t)$, the log return is **normally distributed**:
+
+$r_t \sim N \left( (\mu - \frac{1}{2}\sigma^2)t, \sigma^2 t \right)$
+
+### dt intervals for 
+![plot](./directory_1/directory_2/.../directory_n/plot.png)
+
