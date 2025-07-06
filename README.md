@@ -1,3 +1,9 @@
+## Create environment using `environment.yml` file
+```bash
+conda env create -f environment.yml
+conda activate pymc-env
+```
+
 ## The goal of GBM.ipynb is to use the feature (that we will derive) of log-normal returns of the stocks according to GBM modeling of changes in stock prices and use pyMC montecarlo sampling using normal priors for drift and volatility of the GBM. 
 
 ### Modeling changes in stock price $\(dS_t\)$
