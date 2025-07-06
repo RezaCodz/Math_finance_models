@@ -1,14 +1,18 @@
-name: Math_finance_models
+name: pymc-env
 channels:
   - conda-forge
+  - defaults
 dependencies:
   - python=3.11
-  - yfinance
+  - numpy
   - pandas
-  - scipy
-  - numpy<2.0
-  - scikit-learn
-  - matplotlib
-  - seaborn
   - pymc
+  - seaborn
+  - scikit-learn
   - arviz
+  - matplotlib
+  - numpy<2.0
+  - scipy
+  - yfinance
+  - pip
+  - ipykernel
