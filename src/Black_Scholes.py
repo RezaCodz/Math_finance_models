@@ -53,7 +53,7 @@ def implied_volatility_vs_maturity(ticker, max_expiries=6, r=0.01):
             calls = option_chain.calls
             S = stock.history(period="1d")["Close"].iloc[-1]
 
-            calls_filtered = calls[(calls["strike"] > S * 0.9) & (calls["strike"] < S * 1.1)]
+            calls_filtered = calls[(calls["strike"] > S * 0.95) & (calls["strike"] < S * 1.05)]
             if calls_filtered.empty:
                 continue
 
